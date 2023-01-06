@@ -453,27 +453,6 @@ contract Redeemer {
             revert Exception(29, 0, 0, address(0), address(0));
         }
 
-        // Get the divider from the periphery
-        ISenseDivider divider = ISenseDivider(
-            ISensePeriphery(periphery).divider()
-        );
-
-        // Get the adapter from the divider
-        address adapter = divider.adapterAddresses(a);
-
-        // Get the adapter's principal token
-        address userPrincipal = ISenseDivider(divider).pt(adapter, s);
-
-        // Confirm that the adapter corresponds to this market's principal token
-        if (address(token) != userPrincipal) {
-            revert Exception(27, 0, 0, address(token), userPrincipal);
-        }
-
-        // Confirm that the principal token has matured
-        if (s > block.timestamp) {
-            revert Exception(7, s, 0, address(0), address(0));
-        }
-
         // Cache the lender to save on SLOAD operations
         address cachedLender = lender;
 
@@ -491,6 +470,14 @@ contract Redeemer {
 
         // Get the existing balance of Sense PTs
         uint256 senseBalance = token.balanceOf(address(this));
+
+        // Get the divider from the periphery
+        ISenseDivider divider = ISenseDivider(
+            ISensePeriphery(periphery).divider()
+        );
+
+        // Get the adapter from the divider
+        address adapter = divider.adapterAddresses(a);
 
         // Redeem the tokens from the Sense contract
         ISenseDivider(divider).redeem(adapter, s, senseBalance);
