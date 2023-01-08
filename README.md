@@ -20,7 +20,7 @@ ERC20: USDC and DAI
 ERC721: none
 ERC777: none
 FEE-ON-TRANSFER: none
-REBASING TOKENS: none
+REBASING TOKENS: PTs may originate from markets that use a rebasing tokens (such as Aave's a-tokens)
 ADMIN: trusted
 ```
 
@@ -39,7 +39,9 @@ Example:
 - `MarketPlace.sol`
 - `Redeemer.sol`
 - `Converter.sol`
+- `Creator.sol`
 - `ERC5095.sol`
+- `Maturities.sol`
 
 # About Illuminate
 
