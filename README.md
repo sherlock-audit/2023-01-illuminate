@@ -43,6 +43,8 @@ Example:
 - `ERC5095.sol`
 - `Maturities.sol`
 
+For more information about the remeidations and modifications since the previous audit, see this [document](https://docs.google.com/document/d/1M51cKWmZ84BadUMLKGQmCqnTyWRtNvUsk2XJoWRuRHU/edit?usp=sharing).
+
 # About Illuminate
 
 Illuminate is a fixed-rate lending protocol designed to aggregate fixed-yield Principal Tokens and provide Illuminate's users and integrators a guarantee of the best rate in DeFi, while also deepening liquidity across the fixed-rate space.
