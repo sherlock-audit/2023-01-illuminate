@@ -10,6 +10,14 @@
 - [Twitter](https://twitter.com/IlluminateFi)
 - [Docs](https://docs.illuminate.finance/)
 
+Important Note -- This is a remediation audit as a follow up of our previous audit on October 22 ([Link](https://github.com/sherlock-audit/2022-10-illuminate))
+
+In addition to the remediation of findings, we also implemented two additional security features:
+- Multi-stage pausing: Implemented the ability to pause the entire protocol, particular integrations, or particular external principal tokens
+- Rate-limiting: Implemented the limitation of external protocol deposits per 24 hours. Prevents complete insolvency in the event of an external integration vulnerability.
+
+Full diff & individual remediations: ([Link](https://docs.google.com/document/d/1M51cKWmZ84BadUMLKGQmCqnTyWRtNvUsk2XJoWRuRHU/))
+
 # On-chain context
 
 TO FILL IN BY PROTOCOL
@@ -81,10 +89,12 @@ With all this established, we are likely contesting / rejecting most admin centr
 
 The areas we are most concerned about for this audit are:
 
-- Our Principal Token implementation (`ERC5095.sol`)
-- Usage of `holdings` mapping in the Redeemer contract
 - Malicious user-provided arguments to `lend` and `redeem` methods
 - Any discrepancies between Illuminate PT and external protocol PT accounting
+- Ensure all reports were properly addressed
+- Ensure new security features are correctly implemented
+   - Rate limiting
+   - Admin pausing mechanism
 
 ### Out of Scope
 
